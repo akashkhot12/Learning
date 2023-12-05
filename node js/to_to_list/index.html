@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node.js Todo App</title>
+</head>
+<body>
+  <h1>Todo List</h1>
+  <ul id="tasks"></ul>
+  <form id="form" action="">
+    <input id="task" autocomplete="off" />
+    <button onclick="addTask()">Add Task</button>
+  </form>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="index.js"></script>
+  <script>
+    function addTask() {
+      const task = $('#task').val();
+      if (task) {
+        $.ajax({
+          type: 'POST',
+          url: '/tasks',
+          data: { task: task },
+          success: function(response) {
+            if (response.success) {
+              loadTasks();
+              $('#task').val('');
+            } else {
+              alert(response.message);
+            }
+          }
+        });
+      } else {
+        alert('Task cannot be empty.');
+      }
+    }
+
+    function deleteTask(id) {
+      $.ajax({
+        type: 'DELETE',
+        url: `/tasks/${id}`,
+        success: function(response) {
+          if (response.success) {
+            loadTasks();
+          } else {
+            alert(response.message);
+          }
+        }
+      });
+    }
+
+    function loadTasks() {
+      $.get('/tasks', function(tasks) {
+        const tasksList = $('#tasks');
+        tasksList.empty();
+        tasks.forEach(function(task, index) {
+          tasksList.append(`<li>${task} <button onclick="deleteTask(${index})">Delete</button></li>`);
+        });
+      });
+    }
+
+    $(document).ready(function() {
+      loadTasks();
+    });
+  </script>
+</body>
+</html>
