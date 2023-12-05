@@ -14,4 +14,7 @@ app.get('/home',(req,res)=>{
     res.sendFile(`${publicPath}/home.html`)
 })
 
+app.get('*',(req,res)=>{
+    res.sendFile(`${publicPath}/nopage.html`)
+})
 app.listen(5000)
