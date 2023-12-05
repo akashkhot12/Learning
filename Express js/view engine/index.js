@@ -16,11 +16,11 @@ app.get('/home',(req,res)=>{
     res.sendFile(`${publicPath}/home.html`)
 })
 
-app.get('*',(req,res)=>{
-    res.sendFile(`${publicPath}/nopage.html`)
-})
-
-// app.get('/profile',(req,res)=>{
-//     res.render('profile')
+// app.get('*',(req,res)=>{
+//     res.sendFile(`${publicPath}/nopage.html`)
 // })
+
+app.get('/profile',(req,res)=>{
+    res.render('profile')
+})
 app.listen(5000)
