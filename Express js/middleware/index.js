@@ -1,6 +1,8 @@
 const express =require("express");
 const app = express();
 
+
+// middleware 
 const reqFilter = (req,res,next)=>{
     console.log("this is next funtioning");
     next();
