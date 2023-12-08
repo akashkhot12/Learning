@@ -12,5 +12,12 @@ const Client = new MongoClient(url);
 
 
 async function getData(){
- let result = await Client.connect()
+ let result = await Client.connect();
+ let db = result.db(database);
+ let collections = db.collection('products');
+ let response = await collections.find().toArray();
+ console.log(response);
+
 }
+
+getData();
