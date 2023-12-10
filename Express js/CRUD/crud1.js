@@ -18,3 +18,19 @@ const insertData = async()=>{
     
 }
 // insertData()
+
+const readData =async()=>{
+    let data = await getConnet()
+    const result = await data.find().toArray();
+    console.log(result);
+}
+// readData()
+
+const updateData = async()=>{
+    let data = await getConnet();
+    const result = await data.updateOne({name:"akash"},{$set:{name:"mukesh"}})
+    console.log(result);
+}
+
+// updateData()
+
