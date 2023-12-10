@@ -31,6 +31,12 @@ const updateData = async()=>{
     const result = await data.updateOne({name:"akash"},{$set:{name:"mukesh"}})
     console.log(result);
 }
-
 // updateData()
+
+const deleteData = async()=>{
+    let data = await getConnet();
+    const result  = await data.deleteOne({name:"chetna"})
+    console.log(result.acknowledged);
+}
+deleteData()
 
