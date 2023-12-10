@@ -16,7 +16,30 @@ const getdata = async()=>{
     console.log(result);
 }
 
-getdata();
+// getdata();
+
+const insertData = async()=>{
+    let data= await getconnection();
+    const result = await data.insertOne({name:"akash"})
+    console.log(result);
+}
+
+// insertData()
+
+const updatedData = async()=>{
+    let data = await getconnection();
+    const result = await data.updateOne({name:"mukesh"},{$set:{name: "akash"}})
+    console.log(result)
+}
+
+// updatedData()
+
+const deleteData = async()=>{
+    let data = await getconnection();
+    const result = await data.deleteOne({name:"akash"})
+    console.log(result);
+}
+deleteData()
 
 
 
