@@ -18,6 +18,14 @@ app.get('/', async(req,res)=>{
 })
 
 
+app.post('/' ,async (req , res)=>{
+
+  let data = await getConnect();
+  const result = await data.insertOne(req.body)
+  res.send(result);
+
+})
+
 app.listen(5000,()=>{
     console.log("server is up");
 })
