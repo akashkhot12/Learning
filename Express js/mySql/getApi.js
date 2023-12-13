@@ -38,4 +38,14 @@ app.put("/:id",(req,resp)=>{
    
   })
 
+
+  app.delete('/:id',(req,res)=>{
+    con.query("delete from usesrs where id = "+req.params.id,(error,results)=>{
+      if (error) {
+        res.send(error)
+      } 
+      res.send(results)
+  })
+})
+
 app.listen(5000)
