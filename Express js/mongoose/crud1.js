@@ -23,4 +23,11 @@ const addInDb = async()=>{
   console.log(result);
 }
 
-addInDb()
+// addInDb()
+
+const readData = async()=>{
+    const product = mongoose.model('products',productScehma);
+    let data = product.find().toArray();
+    console.log(data);
+}
+readData();
