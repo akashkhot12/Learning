@@ -1,12 +1,12 @@
 const express = require("express");
-require("./API-Mongoose/config.js");
+require("./config");
 const product = require("./product");
 const app = express();
 
 app.use(express.json());
 
 
-app.get('/serch/:key',async(req,res)=>{
+app.get('/search/:key',async(req,res)=>{
     console.log(req.params.key);
     let data = await product.find( 
         {
@@ -15,6 +15,7 @@ app.get('/serch/:key',async(req,res)=>{
             ]
         }
     )
+    res.send(data)
 })
 
 app.listen(5000)
