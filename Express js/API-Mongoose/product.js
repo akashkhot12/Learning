@@ -7,3 +7,5 @@ const productSchema = new mongoose.Schema(
         price:Number
     }
 )
+
+module.exports = mongoose.model('products',productSchema)
