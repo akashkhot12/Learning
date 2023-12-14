@@ -1,18 +1,17 @@
 const mongoose = require('mongoose');
 
-
 const patientData = new mongoose.Schema({
-    name:{type:String},
-    phone:{type:Number},
-    gender:{type:String},
-    email:{type:String},
-    date:{type:String},
-    time:{type:String},
-    area:{type:String},
-    city:{type:String},
-    state:{type:String},
-    postcode:{type:String}
+   name:String,
+   phone:String,
+   gender:String,
+   email:String,
+   date:String,
+   time:String,
+   area:String,
+   city:String,
+   state:String,
+   postcode:String
 })
 
-const Patient = mongoose.model("Patient",patientData);
-module.exports = Patient;
+const Patient = mongoose.model("Appointments",patientData);
+module.exports = Patient
