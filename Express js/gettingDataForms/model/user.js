@@ -7,4 +7,5 @@ const userData = new mongoose.Schema({
     contact:{type:Number}
 })
 
-const User = mongoose.model("User",userData)
+const User = mongoose.model("User",userData);
+module.exports = User
