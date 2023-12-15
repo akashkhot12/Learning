@@ -29,6 +29,11 @@ app.post('/',async(req,res)=>{
     res.send(a.toString());
 })
 
+app.get('/showData',async(req,res)=>{
+    let showData = await Patient.find()
+    res.send(showData)
+})
+
 
 // listening routes
 
