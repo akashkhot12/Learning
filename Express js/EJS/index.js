@@ -4,12 +4,20 @@ const app = express();
 
 app.get('/' , (req , res)=>{
 
-   res.render("index.ejs",{
-   dayType:"a weekday",
-   advise :"its time to work hard"
-}
-   )
 
+    const today = new Date();
+    const day = today.getDay();
+
+    let type = "a weekday"
+    let adv = "its time to work hard"
+    if (day ===0 || day ===6) {
+        let type = "a weekday"
+        let adv = "its time to have a fun"
+    } 
+   res.render("index.ejs",{
+   dayType:type,
+   advise :adv
+})
 })
 
 app.listen(5000,()=>{
