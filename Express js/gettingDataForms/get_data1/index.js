@@ -8,6 +8,7 @@ const app = express();
 // middleware
 
 app.use(express.urlencoded({extended:true}))
+app.use(express.static('table.html'));
 
 
 // connect database
@@ -29,9 +30,18 @@ app.post('/',async(req,res)=>{
     res.send(a.toString());
 })
 
+// show data to ui
 app.get('/showData',async(req,res)=>{
-    let showData = await Patient.find()
-    res.send(showData)
+    try {
+        // Fetch data from MongoDB
+        const data = await Patient.find();
+        res.json(data);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+      
+     
 })
 
 
