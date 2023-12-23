@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
-const quates = require('./dummy.json')
+const quates = require('./dummy.json');
+const userRouter = require('./routes/userRoutes');
+
+app.use('/users',userRouter);
+
 
 app.get('/',(req,res)=>{
     res.send("hello world")
