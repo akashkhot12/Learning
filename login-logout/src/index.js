@@ -7,7 +7,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/q',(req,res)=>{
-    res.json(quates)
+    res.status(200).json(quates)
 })
 
 app.listen(5000,()=>{
