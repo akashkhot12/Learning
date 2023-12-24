@@ -3,6 +3,8 @@ const app = express();
 const quates = require('./dummy.json');
 const userRouter = require('./routes/userRoutes');
 const noteRouter = require('./routes/noteRoutes');
+const mongoose  = require('mongoose');
+
 
 
 app.use('/users',userRouter);
@@ -12,10 +14,11 @@ app.get('/',(req,res)=>{
     res.send("hello world")
 })
 
-app.get('/q',(req,res)=>{
-    res.status(200).json(quates)
+mongoose.connect('mongodb+srv://Akash:Akash3975@loginlogout.2erou3k.mongodb.net/?retryWrites=true&w=majority').then(()=>{
+    app.listen(5000,()=>{
+        console.log("server start on 5000 port");
+    })
+}).catch((error)=>{
+    console.log(error);
 })
 
-app.listen(5000,()=>{
-    console.log("server start on 5000 port");
-})
