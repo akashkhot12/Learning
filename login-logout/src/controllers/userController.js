@@ -39,15 +39,13 @@ const signup = async (req, res) => {
 
 const signin = async (req, res) => {
     const { email, password } = req.body;
-
     try {
         const existingUser = await userModel.findOne({ email: email});
         if (!existingUser) {
             return res.status(404).json({ message: "User not found" });
         }
-        console.log(existingUser.password);
 
-        const matchPassword = await bcrypt.compare(password,existingUser.password );
+        const matchPassword = await bcrypt.compare(password,existingUser.password)
         console.log(matchPassword);
 
         if(!matchPassword){
