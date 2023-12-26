@@ -33,32 +33,39 @@ const signup = async (req, res) => {
         console.log(error);
         res.status(500).json({ message: "something went wrong" });
     }
-
-
 }
+
 
 const signin = async (req, res) => {
     const { email, password } = req.body;
     try {
-        const existingUser = await userModel.findOne({ email: email});
+        // Check if the user exists
+        const existingUser = await userModel.findOne({ email: email });
         if (!existingUser) {
             return res.status(404).json({ message: "User not found" });
         }
+    
 
-        const matchPassword = await bcrypt.compare(password,existingUser.password)
+        // Compare the entered password with the hashed password in the database
+        const matchPassword = await bcrypt.compare(password, existingUser.password);
         console.log(matchPassword);
 
-        if(!matchPassword){
-            return res.status(400).json({ message: "invalid credentials" });
+        // Check if the passwords match
+        if (!matchPassword) {
+            return res.status(400).json({ message: "Invalid credentials" });
         }
 
+        // Generate a JWT token for the authenticated user
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, SECRET_KEY);
-        res.status(201).json({ user: existingUser, token: token })
+
+        // Respond with the user details and the token
+        res.status(201).json({ user: existingUser, token: token });
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: "something went wrong" });
+        res.status(500).json({ message: "Something went wrong" });
     }
-}
+};
+
 
 module.exports = { signup, signin };
