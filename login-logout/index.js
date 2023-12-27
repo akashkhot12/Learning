@@ -13,9 +13,10 @@ const passkey  = async()=>{
      console.log(store);
 }
 passkey();
+console.log(store);
 
 const compareKey = async()=>{
-    
+    const matchPassword = await bcrypt.compare(password, store);
 }
 
 
