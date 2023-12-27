@@ -48,7 +48,6 @@ const signin = async (req, res) => {
 
         // Compare the entered password with the hashed password in the database
         const matchPassword = await bcrypt.compare(password, existingUser.password);
-        console.log(matchPassword);
 
         // Check if the passwords match
         if (!matchPassword) {
