@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken');
 const SECRET_KEY = "NOTESAPI";
 
 
+
+
 const signup = async (req, res) => {
 
     // existing user check
