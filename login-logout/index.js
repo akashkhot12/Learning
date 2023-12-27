@@ -5,15 +5,21 @@ const SECRET_KEY = "NOTESAPI";
 
 
 const password = 'Akash123';
-
+let store 
+// create function
 const passkey  = async()=>{
     const hashedPassword =await bcrypt.hash(password,10)
-    console.log(hashedPassword);
+     store = hashedPassword;
+     console.log(store);
 }
-passkey()
+passkey();
 
-if (condition) {
-    
-} else {
+const compareKey = async()=>{
     
 }
+
+
+
+
+
+
