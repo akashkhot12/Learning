@@ -22,7 +22,7 @@ const signup = async (req, res) => {
 
         const result = await userModel.create({
             email: email,
-            password: password,
+            password: hashedPassword,
             username: username
         });
 
