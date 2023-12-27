@@ -9,4 +9,4 @@ noteRouter.post('/',(Req,res)=>{
     res.send('note post request')
 })
 
-module.exports = noteRouter
+module.exports = noteRouter;
