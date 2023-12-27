@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const userRouter = require('./routes/userRoutes');
 const noteRouter = require('./routes/noteRoutes');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const mongoose = require('mongoose');
 
@@ -20,7 +22,7 @@ app.get('/', (req, res) => {
     res.send("hello world")
 })
 
-mongoose.connect('mongodb+srv://Akash:Akash3975@loginlogout.2erou3k.mongodb.net/?retryWrites=true&w=majority').then(() => {
+mongoose.connect('').then(() => {
     app.listen(5000, () => {
         console.log("server start on 5000 port");
     })
