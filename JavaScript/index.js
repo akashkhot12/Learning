@@ -1,4 +1,4 @@
-function countVariable(str) {
+const countVariable=(str)=>{
   let count = 0;
   for (const iterator of str) {
     if (
