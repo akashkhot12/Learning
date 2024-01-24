@@ -5,5 +5,4 @@ const data = async () => {
   let result = await connect.find().toArray();
   console.log(result);
 };
-
 data();
