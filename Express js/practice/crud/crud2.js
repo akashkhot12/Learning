@@ -13,4 +13,18 @@ const readData = async()=>{
     console.log(read);
 }
 
-readData()
+// readData()
+
+const updateData = async()=>{
+    let result = await mongodb();
+    let update = await result.updateOne({product:"light"},{$set:{product:"bulp"}});
+    console.log(update);
+}
+// updateData();
+
+const deleteData = async()=>{
+    let result = await mongodb();
+    let delet = await result.deleteOne({product:"bulp"});
+    console.log(delet);
+}
+deleteData()
