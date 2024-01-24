@@ -1,12 +1,12 @@
-const {MongoClient}=require("mongodb");
- const url = "mongodb://localhost:27017"
+const { MongoClient } = require("mongodb");
+const url = "mongodb://localhost:27017";
 const client = new MongoClient(url);
-const database  = 'ecom';
+const database = "ecom";
 
-async function getConnections(){
-    let result = await client.connect();
-    let db = result.db(database);
-    return db.collection('products');
+async function getConnections() {
+  let result = await client.connect();
+  let db = result.db(database);
+  return db.collection("products");
 }
 
 module.exports = getConnections;

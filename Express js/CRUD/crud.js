@@ -16,7 +16,7 @@ const getdata = async()=>{
     console.log(result);
 }
 
-// getdata();
+getdata();
 
 const insertData = async()=>{
     let data= await getconnection();
@@ -39,7 +39,7 @@ const deleteData = async()=>{
     const result = await data.deleteOne({name:"akash"})
     console.log(result);
 }
-deleteData()
+// deleteData()
 
 
 
